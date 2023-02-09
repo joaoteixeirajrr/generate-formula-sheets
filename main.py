@@ -28,7 +28,7 @@ def printline(text):
 
 def loading():
     printline('.')
-    sleep(0.07)
+    sleep(0.05)
 
 def generate_code(spreadsheet, line_first=1, line_end=10, column_init=1, column_quantity=10, column_jump=4, _print=False):
 
@@ -42,7 +42,7 @@ def generate_code(spreadsheet, line_first=1, line_end=10, column_init=1, column_
         for _ in range(1, column_quantity):
             __text += f'SE({spreadsheet}!{columns[column_init + jump]}{row}=B4; CONCATENAR({spreadsheet}!{columns[column_init + jump -2]}{row}; " - "; {spreadsheet}!{columns[column_init + jump -2]}3);'
         
-        jump += column_jump
+            jump += column_jump
 
         if _print:
             print(f'={__text} "")\n\n')
