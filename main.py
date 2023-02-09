@@ -4,13 +4,19 @@ from time import sleep
 
 def main():
     show = False
+
+    spreadsheet_name = ''
+
+    while spreadsheet_name == '':    
+        spreadsheet_name = input('|> Informe o nome Aba da Panilha para geração dos códigos: ')
+    
     in_show = input('|> Digite 1 para mostrar o resultado em tela: ')
 
     if in_show == '1':
         show = True
 
     printline('|> Gerando códigos')
-    codes = generate_code('TESTE', line_first=6, line_end=90, column_init=6, column_quantity=40, _print=show) 
+    codes = generate_code(spreadsheet_name, line_first=6, line_end=90, column_init=6, column_quantity=40, _print=show) 
 
     filename = export_to_file(codes)
     
