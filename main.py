@@ -1,7 +1,6 @@
 import os
 from time import sleep
 
-
 def main():
     show = False
 
@@ -70,7 +69,6 @@ def export_to_file(data=[], break_line='\r\n\n', filename='codes_sheets'):
 
     return file_path
         
-
 def generate_column_sheet():
     alfabeto = []
     c = 0
