@@ -31,7 +31,7 @@ def printline(text):
 
 def loading():
     printline('.')
-    sleep(0.05)
+    sleep(0.03)
 
 def generate_code(spreadsheet, line_first=1, line_end=10, column_init=1, column_quantity=10, column_jump=4, columnn_compare='B4', _print=False):
 
