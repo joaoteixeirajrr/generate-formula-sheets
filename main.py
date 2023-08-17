@@ -4,14 +4,18 @@ from time import sleep
 def main():
     show = False
 
-    spreadsheet_name = ''
-    columnn_compare = ''
+    spreadsheet_name = None
+    columnn_compare = None
+    column_jump = None
 
-    while spreadsheet_name == '':    
+    while spreadsheet_name is None:    
         spreadsheet_name = input('|> Informe o nome Aba da Panilha para geração dos códigos: ')
    
-    while columnn_compare == '':    
+    while columnn_compare is None:    
         columnn_compare = input('|> Informe a coluna e linha de comparação: ')
+
+    while column_jump is None:    
+        column_jump = int(input('|> Informe a quantidade de colunas que irá pular: '))
     
     in_show = input('|> Digite 1 para mostrar o resultado em tela: ')
 
@@ -19,7 +23,7 @@ def main():
         show = True
 
     printline('|> Gerando códigos')
-    codes = generate_code(spreadsheet_name, line_first=6, line_end=90, column_init=6, column_quantity=40, columnn_compare=columnn_compare, _print=show) 
+    codes = generate_code(spreadsheet_name, line_first=6, line_end=90, column_init=6, column_quantity=40, column_jump=column_jump, columnn_compare=columnn_compare, _print=show) 
 
     filename = export_to_file(codes)
     
@@ -43,7 +47,7 @@ def generate_code(spreadsheet, line_first=1, line_end=10, column_init=1, column_
         __text = ''
 
         for _ in range(1, column_quantity):
-            __text += f'SE({spreadsheet}!{columns[column_init + jump]}{row}={columnn_compare}; CONCATENAR({spreadsheet}!{columns[column_init + jump -2]}{row}; " - "; {spreadsheet}!{columns[column_init + jump -2]}3);'
+            __text += f'SE({spreadsheet}!{columns[column_init + jump]}{row}={columnn_compare}; CONCATENAR({spreadsheet}!{columns[column_init + jump -2]}{row}; " - "; {spreadsheet}!{columns[column_init + jump -2]}$3);'
         
             jump += column_jump
 
